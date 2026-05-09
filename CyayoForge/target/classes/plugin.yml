@@ -1,0 +1,54 @@
+name: CyayoForge
+version: '1.0.0'
+main: id.cyayo.forge.CyayoForge
+api-version: '1.21'
+description: Plugin tempa item canggih dengan integrasi MMOItems
+authors: [ Cyayo ]
+
+depend:
+  - MythicLib
+  - MMOItems
+
+softdepend:
+  - PlaceholderAPI
+
+commands:
+  cyayoforge:
+    description: Perintah utama CyayoForge
+    aliases: [ cforge, cf ]
+    usage: /cyayoforge <subperintah>
+
+permissions:
+  cyayoforge.use:
+    description: Membuka GUI tempa
+    default: op
+  cyayoforge.bypass.animation:
+    description: Lewati animasi, langsung ke minigame
+    default: op
+  cyayoforge.bypass.minigame:
+    description: Lewati minigame, kualitas sesuai config
+    default: op
+  cyayoforge.admin:
+    description: Akses semua perintah admin
+    default: op
+    children:
+      cyayoforge.reload: true
+      cyayoforge.open: true
+      cyayoforge.give: true
+      cyayoforge.reset: true
+      cyayoforge.setquality: true
+  cyayoforge.reload:
+    description: Reload konfigurasi plugin
+    default: op
+  cyayoforge.open:
+    description: Buka GUI tempa untuk player lain
+    default: op
+  cyayoforge.give:
+    description: Memberikan item hasil tempa atau material ke player
+    default: op
+  cyayoforge.reset:
+    description: Reset counter tempa player
+    default: op
+  cyayoforge.setquality:
+    description: Debug set kualitas pada item yang dipegang
+    default: op
