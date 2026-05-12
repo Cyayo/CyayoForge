@@ -279,6 +279,31 @@ public class ForgeCommand implements CommandExecutor, TabCompleter {
                 plugin.getConfigManager().playSound(player, "gui.sound_open");
             }
 
+            case "history" -> {
+                if (!sender.hasPermission("cyayoforge.admin.history")) {
+                    sender.sendMessage(ColorUtil.color(plugin.getConfigManager().getMessage("no_permission")));
+                    return true;
+                }
+                if (args.length < 2) {
+                    sender.sendMessage(ColorUtil.color("&cUsage: /forge history <player>"));
+                    return true;
+                }
+                if (!(sender instanceof Player player)) {
+                    sender.sendMessage(id.cyayo.forge.util.ColorUtil.color(plugin.getConfigManager().getMessage("only_players")));
+                    return true;
+                }
+                
+                org.bukkit.OfflinePlayer target = Bukkit.getOfflinePlayer(args[1]);
+                if (target == null || (!target.hasPlayedBefore() && !target.isOnline())) {
+                    sender.sendMessage(ColorUtil.color(
+                            plugin.getConfigManager().getMessage("player_not_found", "{player}", args[1])));
+                    return true;
+                }
+                
+                player.openInventory(new id.cyayo.forge.gui.HistoryGUI(plugin, target.getUniqueId(), target.getName()).getInventory());
+                plugin.getConfigManager().playSound(player, "gui.sound_open");
+            }
+
             default -> sender.sendMessage(id.cyayo.forge.util.ColorUtil.color(plugin.getConfigManager().getMessage("unknown_command")));
         }
         return true;
@@ -320,11 +345,11 @@ public class ForgeCommand implements CommandExecutor, TabCompleter {
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
         if (args.length == 1)
-            return filter(List.of("open", "salvage", "inspect", "reload", "reset", "give", "version", "unstuck"), args[0]);
+            return filter(List.of("open", "salvage", "inspect", "reload", "reset", "give", "version", "unstuck", "history"), args[0]);
 
         if (args.length == 2) {
             return switch (args[0].toLowerCase()) {
-                case "open", "salvage", "reset", "give", "unstuck" ->
+                case "open", "salvage", "reset", "give", "unstuck", "history" ->
                         Bukkit.getOnlinePlayers().stream().map(Player::getName)
                                 .filter(n -> n.toLowerCase().startsWith(args[1].toLowerCase()))
                                 .collect(Collectors.toList());

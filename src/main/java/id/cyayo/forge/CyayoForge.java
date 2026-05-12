@@ -31,6 +31,7 @@ public class CyayoForge extends JavaPlugin implements CyayoForgeAPI {
     private id.cyayo.forge.config.SalvageBonusConfig salvageBonusConfig;
     private PlayerDataManager playerDataManager;
     private id.cyayo.forge.config.InspectMenuConfig inspectMenuConfig;
+    private id.cyayo.forge.config.HistoryMenuConfig historyMenuConfig;
     private ForgeManager forgeManager;
     private SalvageManager salvageManager;
 
@@ -50,6 +51,7 @@ public class CyayoForge extends JavaPlugin implements CyayoForgeAPI {
         this.salvageBonusConfig = new id.cyayo.forge.config.SalvageBonusConfig(this);
         this.playerDataManager = new PlayerDataManager(this);
         this.inspectMenuConfig = new id.cyayo.forge.config.InspectMenuConfig(this);
+        this.historyMenuConfig = new id.cyayo.forge.config.HistoryMenuConfig(this);
         this.forgeManager = new ForgeManager(this);
         this.salvageManager = new SalvageManager(this);
 
@@ -77,6 +79,7 @@ public class CyayoForge extends JavaPlugin implements CyayoForgeAPI {
         saveResource("menus/minigame.yml", false);
         saveResource("menus/salvage.yml", false);
         saveResource("menus/inspect.yml", false);
+        saveResource("menus/history.yml", false);
         saveResource("salvage_bonus.yml", false);
     }
 
@@ -86,6 +89,7 @@ public class CyayoForge extends JavaPlugin implements CyayoForgeAPI {
         Bukkit.getPluginManager().registerEvents(new SalvageGUIListener(this), this);
         Bukkit.getPluginManager().registerEvents(new PlayerListener(this), this);
         Bukkit.getPluginManager().registerEvents(new id.cyayo.forge.listener.InspectGUIListener(this), this);
+        Bukkit.getPluginManager().registerEvents(new id.cyayo.forge.listener.HistoryGUIListener(this), this);
     }
 
     private void registerCommands() {
@@ -112,6 +116,7 @@ public class CyayoForge extends JavaPlugin implements CyayoForgeAPI {
         salvageBonusConfig.reload();
         playerDataManager.reload();
         inspectMenuConfig.reload();
+        historyMenuConfig.reload();
         forgeManager.reload();
     }
 
@@ -126,5 +131,6 @@ public class CyayoForge extends JavaPlugin implements CyayoForgeAPI {
     public PlayerDataManager getPlayerDataManager() { return playerDataManager; }
     public ForgeManager getForgeManager() { return forgeManager; }
     public id.cyayo.forge.config.InspectMenuConfig getInspectMenuConfig() { return inspectMenuConfig; }
+    public id.cyayo.forge.config.HistoryMenuConfig getHistoryMenuConfig() { return historyMenuConfig; }
     public SalvageManager getSalvageManager() { return salvageManager; }
 }

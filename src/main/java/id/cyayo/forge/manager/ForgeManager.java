@@ -358,11 +358,11 @@ public class ForgeManager {
         player.getInventory().addItem(output).values()
                 .forEach(d -> player.getWorld().dropItem(player.getLocation(), d));
 
+        plugin.getPlayerDataManager().recordForge(
+                player.getUniqueId(), session.getRecipe().getForgeType(), output);
+
         String itemName = output.hasItemMeta() && output.getItemMeta().hasDisplayName()
                 ? output.getItemMeta().getDisplayName() : output.getType().name();
-
-        plugin.getPlayerDataManager().recordForge(
-                player.getUniqueId(), session.getRecipe().getForgeType(), itemName);
 
         String qColor = switch (session.getQuality()) {
             case PERFECT -> "&6"; case EXQUISITE -> "&b"; case GOOD -> "&a";
