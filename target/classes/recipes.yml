@@ -1,0 +1,328 @@
+# ╔══════════════════════════════════════════════╗
+# ║       CyayoForge - Konfigurasi Resep         ║
+# ╚══════════════════════════════════════════════╝
+#
+# Sistem resep berbasis RENTANG material:
+# - recipe: jumlah material minimum untuk resep ini aktif
+# - Sistem otomatis memilih resep tertinggi yang <= jumlah material
+# - Contoh: 5 material = DAGGER, 6 material = masih DAGGER (bukan KATANA)
+#           8 material = KATANA, 11 material = masih KATANA
+#           12 material = SWORD
+#
+# Sistem Permission (2 Jenis):
+#
+# 1. Permission Kategori (Category Permission):
+#    Diletakkan di bawah nama kategori. Jika player tidak punya permission ini,
+#    kategori tersebut tidak akan muncul di GUI dan tidak bisa dibuat (akan diabaikan).
+#    Contoh:
+#    spear:
+#      type: SPEAR
+#      recipe: 18
+#      permission: "cyayoforge.category.spear"
+#
+# 2. Permission Item (Item Permission):
+#    Diletakkan di bawah output item. Jika player tidak punya permission ini,
+#    item tersebut tidak akan bisa didapatkan (roll akan melewati item ini).
+#    Contoh:
+#    outputs:
+#      rare_sword:
+#        id: RARE_SWORD
+#        base: 10
+#        permission: "cyayoforge.item.rare"
+#
+# 3. Akses Region (Region Access):
+#    Diletakkan di kategori atau item dengan kunci 'regions'. 
+#    Sifatnya adalah 'OR' (Atau) dengan permission. 
+#    Player bisa mengakses resep jika: Memiliki Permission ATAU berada di dalam Region.
+#    Contoh di Kategori:
+#    spear:
+#      type: SPEAR
+#      recipe: 18
+#      regions: ["forge_area"]
+#
+#    Contoh di Item (Output):
+#    outputs:
+#      secret_sword:
+#        id: SECRET_SWORD
+#        base: 50
+#        regions: ["volcano_area"]
+#
+#
+
+weapon:
+
+  dagger:
+    type: DAGGER
+    recipe: 5
+    outputs:
+      grove_shanker:
+        id: GROVE_SHANKER
+        base: 1          # 1/1 = pasti dapat (fallback)
+        templates:
+          POOR: GROVE_SHANKER_POOR
+          GOOD: GROVE_SHANKER_GOOD
+          GREAT: GROVE_SHANKER_GREAT
+          ANCIENT: GROVE_SHANKER_ANCIENT
+          RELIC: GROVE_SHANKER_RELIC
+          SECRET: GROVE_SHANKER_SECRET
+      vinepiercer:
+        id: VINEPIERCER
+        base: 5          # 1/5 chance
+        templates:
+          POOR: VINEPIERCER_POOR
+          GOOD: VINEPIERCER_GOOD
+          GREAT: VINEPIERCER_GREAT
+          ANCIENT: VINEPIERCER_ANCIENT
+          RELIC: VINEPIERCER_RELIC
+          SECRET: VINEPIERCER_SECRET
+
+  katana:
+    type: KATANA
+    recipe: 8
+    outputs:
+      mossedge:
+        id: MOSSEDGE
+        base: 1
+        templates:
+          POOR: MOSSEDGE_POOR
+          GOOD: MOSSEDGE_GOOD
+          GREAT: MOSSEDGE_GREAT
+          ANCIENT: MOSSEDGE_ANCIENT
+          RELIC: MOSSEDGE_RELIC
+          SECRET: MOSSEDGE_SECRET
+      leafcutter:
+        id: LEAFCUTTER
+        base: 3
+        templates:
+          POOR: LEAFCUTTER_POOR
+          GOOD: LEAFCUTTER_GOOD
+          GREAT: LEAFCUTTER_GREAT
+          ANCIENT: LEAFCUTTER_ANCIENT
+          RELIC: LEAFCUTTER_RELIC
+          SECRET: LEAFCUTTER_SECRET
+      elderbloom:
+        id: ELDERBLOOM
+        base: 16
+        templates:
+          POOR: ELDERBLOOM_POOR
+          GOOD: ELDERBLOOM_GOOD
+          GREAT: ELDERBLOOM_GREAT
+          ANCIENT: ELDERBLOOM_ANCIENT
+          RELIC: ELDERBLOOM_RELIC
+          SECRET: ELDERBLOOM_SECRET
+
+  sword:
+    type: SWORD
+    recipe: 12
+    outputs:
+      forestblade:
+        id: FORESTBLADE
+        base: 1
+        templates:
+          POOR: FORESTBLADE_POOR
+          GOOD: FORESTBLADE_GOOD
+          GREAT: FORESTBLADE_GREAT
+          ANCIENT: FORESTBLADE_ANCIENT
+          RELIC: FORESTBLADE_RELIC
+          SECRET: FORESTBLADE_SECRET
+      ruinblade:
+        id: RUINBLADE
+        base: 2
+        templates:
+          POOR: RUINBLADE_POOR
+          GOOD: RUINBLADE_GOOD
+          GREAT: RUINBLADE_GREAT
+          ANCIENT: RUINBLADE_ANCIENT
+          RELIC: RUINBLADE_RELIC
+          SECRET: RUINBLADE_SECRET
+      ruinbreaker:
+        id: RUINBREAKER
+        base: 16
+        templates:
+          POOR: RUINBREAKER_POOR
+          GOOD: RUINBREAKER_GOOD
+          GREAT: RUINBREAKER_GREAT
+          ANCIENT: RUINBREAKER_ANCIENT
+          RELIC: RUINBREAKER_RELIC
+          SECRET: RUINBREAKER_SECRET
+
+  spear:
+    type: SPEAR
+    recipe: 18
+    permission: cyayoforge.category.spear
+    regions:
+      - "forge_spear_zone"
+      - "master_blacksmith_room"
+    outputs:
+      iron_guard_spear:
+        id: IRON_GUARD_SPEAR
+        base: 1
+        templates:
+          POOR: IRON_GUARD_SPEAR_POOR
+          GOOD: IRON_GUARD_SPEAR_GOOD
+          GREAT: IRON_GUARD_SPEAR_GREAT
+          ANCIENT: IRON_GUARD_SPEAR_ANCIENT
+          RELIC: IRON_GUARD_SPEAR_RELIC
+          SECRET: IRON_GUARD_SPEAR_SECRET
+      abyssal_soul_reaper:
+        id: ABYSSAL_SOUL_REAPER
+        base: 7
+        templates:
+          POOR: ABYSSAL_SOUL_REAPER_POOR
+          GOOD: ABYSSAL_SOUL_REAPER_GOOD
+          GREAT: ABYSSAL_SOUL_REAPER_GREAT
+          ANCIENT: ABYSSAL_SOUL_REAPER_ANCIENT
+          RELIC: ABYSSAL_SOUL_REAPER_RELIC
+          SECRET: ABYSSAL_SOUL_REAPER_SECRET
+      royal_sun_piercer:
+        id: ROYAL_SUN_PIERCER
+        base: 25
+        templates:
+          POOR: ROYAL_SUN_PIERCER_POOR
+          GOOD: ROYAL_SUN_PIERCER_GOOD
+          GREAT: ROYAL_SUN_PIERCER_GREAT
+          ANCIENT: ROYAL_SUN_PIERCER_ANCIENT
+          RELIC: ROYAL_SUN_PIERCER_RELIC
+          SECRET: ROYAL_SUN_PIERCER_SECRET
+
+armor:
+
+  boots:
+    type: BOOTS
+    recipe: 5
+    outputs:
+      sproutstep:
+        id: SPROUTSTEP
+        base: 1
+        templates:
+          POOR: SPROUTSTEP_POOR
+          GOOD: SPROUTSTEP_GOOD
+          GREAT: SPROUTSTEP_GREAT
+          ANCIENT: SPROUTSTEP_ANCIENT
+          RELIC: SPROUTSTEP_RELIC
+          SECRET: SPROUTSTEP_SECRET
+      mossroot:
+        id: MOSSROOT
+        base: 5
+        templates:
+          POOR: MOSSROOT_POOR
+          GOOD: MOSSROOT_GOOD
+          GREAT: MOSSROOT_GREAT
+          ANCIENT: MOSSROOT_ANCIENT
+          RELIC: MOSSROOT_RELIC
+          SECRET: MOSSROOT_SECRET
+      ruinroot_walkers:
+        id: RUINROOT_WALKERS
+        base: 14
+        templates:
+          POOR: RUINROOT_WALKERS_POOR
+          GOOD: RUINROOT_WALKERS_GOOD
+          GREAT: RUINROOT_WALKERS_GREAT
+          ANCIENT: RUINROOT_WALKERS_ANCIENT
+          RELIC: RUINROOT_WALKERS_RELIC
+          SECRET: RUINROOT_WALKERS_SECRET
+
+  helmet:
+    type: HELMET
+    recipe: 8
+    outputs:
+      sprouthood:
+        id: SPROUTHOOD
+        base: 1
+        templates:
+          POOR: SPROUTHOOD_POOR
+          GOOD: SPROUTHOOD_GOOD
+          GREAT: SPROUTHOOD_GREAT
+          ANCIENT: SPROUTHOOD_ANCIENT
+          RELIC: SPROUTHOOD_RELIC
+          SECRET: SPROUTHOOD_SECRET
+      mosshelm:
+        id: MOSSHELM
+        base: 5
+        templates:
+          POOR: MOSSHELM_POOR
+          GOOD: MOSSHELM_GOOD
+          GREAT: MOSSHELM_GREAT
+          ANCIENT: MOSSHELM_ANCIENT
+          RELIC: MOSSHELM_RELIC
+          SECRET: MOSSHELM_SECRET
+      ruinwood_crown:
+        id: RUINWOOD_CROWN
+        base: 14
+        templates:
+          POOR: RUINWOOD_CROWN_POOR
+          GOOD: RUINWOOD_CROWN_GOOD
+          GREAT: RUINWOOD_CROWN_GREAT
+          ANCIENT: RUINWOOD_CROWN_ANCIENT
+          RELIC: RUINWOOD_CROWN_RELIC
+          SECRET: RUINWOOD_CROWN_SECRET
+
+  leggings:
+    type: LEGGINGS
+    recipe: 15
+    outputs:
+      sproutwoven:
+        id: SPROUTWOVEN
+        base: 1
+        templates:
+          POOR: SPROUTWOVEN_POOR
+          GOOD: SPROUTWOVEN_GOOD
+          GREAT: SPROUTWOVEN_GREAT
+          ANCIENT: SPROUTWOVEN_ANCIENT
+          RELIC: SPROUTWOVEN_RELIC
+          SECRET: SPROUTWOVEN_SECRET
+      mossbound:
+        id: MOSSBOUND
+        base: 5
+        templates:
+          POOR: MOSSBOUND_POOR
+          GOOD: MOSSBOUND_GOOD
+          GREAT: MOSSBOUND_GREAT
+          ANCIENT: MOSSBOUND_ANCIENT
+          RELIC: MOSSBOUND_RELIC
+          SECRET: MOSSBOUND_SECRET
+      ruinwood_legs:
+        id: RUINWOOD_LEGS
+        base: 14
+        templates:
+          POOR: RUINWOOD_LEGS_POOR
+          GOOD: RUINWOOD_LEGS_GOOD
+          GREAT: RUINWOOD_LEGS_GREAT
+          ANCIENT: RUINWOOD_LEGS_ANCIENT
+          RELIC: RUINWOOD_LEGS_RELIC
+          SECRET: RUINWOOD_LEGS_SECRET
+
+  chestplate:
+    type: CHESTPLATE
+    recipe: 20
+    outputs:
+      sproutguard:
+        id: SPROUTGUARD
+        base: 1
+        templates:
+          POOR: SPROUTGUARD_POOR
+          GOOD: SPROUTGUARD_GOOD
+          GREAT: SPROUTGUARD_GREAT
+          ANCIENT: SPROUTGUARD_ANCIENT
+          RELIC: SPROUTGUARD_RELIC
+          SECRET: SPROUTGUARD_SECRET
+      mosslayer:
+        id: MOSSLAYER
+        base: 5
+        templates:
+          POOR: MOSSLAYER_POOR
+          GOOD: MOSSLAYER_GOOD
+          GREAT: MOSSLAYER_GREAT
+          ANCIENT: MOSSLAYER_ANCIENT
+          RELIC: MOSSLAYER_RELIC
+          SECRET: MOSSLAYER_SECRET
+      ruinwood_plate:
+        id: RUINWOOD_PLATE
+        base: 14
+        templates:
+          POOR: RUINWOOD_PLATE_POOR
+          GOOD: RUINWOOD_PLATE_GOOD
+          GREAT: RUINWOOD_PLATE_GREAT
+          ANCIENT: RUINWOOD_PLATE_ANCIENT
+          RELIC: RUINWOOD_PLATE_RELIC
+          SECRET: RUINWOOD_PLATE_SECRET

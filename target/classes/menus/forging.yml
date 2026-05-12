@@ -1,0 +1,192 @@
+# ╔══════════════════════════════════════════════╗
+# ║        CyayoForge - Konfigurasi Menu GUI     ║
+# ╚══════════════════════════════════════════════╝
+#
+# Layout GUI (5 baris, slot 0-44):
+# [ ][ ][ ][ ][M][ ][ ][ ][ ]   Baris 1 (M=Slot 4: Menu Selector)
+# [ ][ ][ ][ ][ ][ ][ ][ ][ ]   Baris 2
+# [ ][ ][S][S][S][S][P][ ][ ]   Baris 3 (S=Slot 19-22: Materials, P=Slot 25: Preview)
+# [ ][ ][ ][ ][ ][ ][ ][ ][ ]   Baris 4
+# [ ][ ][ ][ ][F][ ][ ][ ][ ]   Baris 5 (F=Slot 40: Forge Button)
+
+# ────────────────────────────────────────────────
+# Pengaturan Utama
+# ────────────────────────────────────────────────
+title: "         &8⚒ ꜰᴏʀɢɪɴɢ ᴍᴇɴᴜ"
+
+# Background filler (semua slot non-interaktif)
+background:
+  material: AIR
+  name: ""
+
+# ────────────────────────────────────────────────
+# Pemetaan Nama (Placeholders)
+# ────────────────────────────────────────────────
+
+# Nama tampilan untuk tipe output (digunakan di placeholder {output_type})
+output_type_names:
+  SWORD: "Pedang"
+  DAGGER: "Belati"
+  KATANA: "Katana"
+  SPEAR: "Spear"
+  HELMET: "Helm"
+  CHESTPLATE: "Baju Zirah"
+  LEGGINGS: "Celana"
+  BOOTS: "Sepatu"
+
+# ────────────────────────────────────────────────
+# Slot 4 - Tombol Pemilih Menu (Weapon/Armor)
+# ────────────────────────────────────────────────
+menu_selector:
+  weapon:
+    material: IRON_SWORD
+    name: "<#FFD700>⚔ <#FFEB3B>Menu Senjata"
+    lore:
+      - "&8&m──────────────────"
+      - " <#a3a3a3>Status: <#e8e8e8>Menu Senjata"
+      - ""
+      - "<#FFD700>➡ <#FFEB3B>Klik untuk ganti ke Armor"
+      - "&8&m──────────────────"
+  armor:
+    material: IRON_CHESTPLATE
+    name: "<#FFD700>🛡 <#FFEB3B>Menu Armor"
+    lore:
+      - "&8&m──────────────────"
+      - " <#a3a3a3>Status: <#e8e8e8>Menu Armor"
+      - ""
+      - "<#FFD700>➡ <#FFEB3B>Klik untuk ganti ke Senjata"
+      - "&8&m──────────────────"
+
+# ────────────────────────────────────────────────
+# Slot 19-22 - Slot Material
+# ────────────────────────────────────────────────
+material_slot_empty:
+  material: WHITE_STAINED_GLASS_PANE
+  name: "&7[ Slot Material ]"
+  lore:
+    - "&8Klik item dari inventorymu"
+    - "&8untuk memasukkan material"
+
+# ────────────────────────────────────────────────
+# Slot 25 - Preview Output
+# ────────────────────────────────────────────────
+preview:
+  # Ditampilkan saat belum ada material / tidak ada resep
+  no_recipe_weapon:
+    material: BARRIER
+    name: "&cTidak Ada Senjata Yang Bisa Dibuat"
+    lore:
+      - "&8&m──────────────────"
+      - "<#6e6e6e>⚔ <#a3a3a3>Category: <#e8e8e8>Senjata"
+      - "<#6e6e6e>❌ <#a3a3a3>Status: <#e8e8e8>Kosong"
+      - " "
+      - "{available_recipes}"
+      - "&8&m──────────────────"
+      - " &eKlik item dari inventorymu untuk"
+      - " &ememasukkan material."
+      - " "
+
+  no_recipe_armor:
+    material: BARRIER
+    name: "&cTidak Ada Armor Yang Bisa Dibuat"
+    lore:
+      - "&8&m──────────────────"
+      - "<#6e6e6e>🛡 <#a3a3a3>Category: <#e8e8e8>Armor"
+      - "<#6e6e6e>❌ <#a3a3a3>Status: <#e8e8e8>Kosong"
+      - " "
+      - "{available_recipes}"
+      - "&8&m──────────────────"
+      - " &eKlik item dari inventorymu untuk"
+      - " &ememasukkan material."
+      - " "
+
+  # Ditampilkan saat resep ditemukan
+  has_recipe:
+    material: PAPER
+    name: "&e✨ Preview: &f{output_type}"
+    lore:
+      - "&8&m──────────────────"
+      - "{category_lore}"
+      - "&7📋 Kemungkinan Output:"
+      - " "
+      - "{output_list}"
+      - "&8&m──────────────────"
+      - "&7🏷 Tier: &b{tier}"
+      - "&7⚙ Multiplier: &e{multiplier}x"
+      - " "
+
+  # Format baris output ({id} = nama output)
+  output_line_guaranteed: " &8- {id} &f(1/1)"
+  output_line_rare: " &8- {id} &f(1/{base})"
+
+  # Format baris resep tersedia ({type} = jenis, {count} = jumlah material)
+  available_recipe_line: "<#6e6e6e>- <#a3a3a3>{type} <#6e6e6e>[<#e8e8e8>{count}<#6e6e6e>]"
+
+  # Preview per tipe output (Ikon yang muncul di slot preview)
+  per_type:
+    DAGGER:
+      material: WOODEN_SWORD
+      name: "&e✦ Dagger"
+      lore: ["&7⚔ Kategori: &fBelati"]
+    KATANA:
+      material: WOODEN_SWORD
+      name: "&e⚔ Katana"
+      lore: ["&7⚔ Kategori: &fKatana"]
+    SWORD:
+      material: WOODEN_SWORD
+      name: "&e✦ Pedang"
+      lore: ["&7⚔ Kategori: &fPedang"]
+    SPEAR:
+      material: TRIDENT
+      name: "&e✦ Spear"
+      lore: ["&7⚔ Kategori: &fSpear"]
+    BOOTS:
+      material: CHAINMAIL_BOOTS
+      name: "&e✦ Sepatu"
+      lore: ["&7🛡 Kategori: &fSepatu"]
+    HELMET:
+      material: CHAINMAIL_HELMET
+      name: "&e✦ Helm"
+      lore: ["&7🛡 Kategori: &fHelm"]
+    LEGGINGS:
+      material: CHAINMAIL_LEGGINGS
+      name: "&e✦ Celana"
+      lore: ["&7🛡 Kategori: &fCelana"]
+    CHESTPLATE:
+      material: CHAINMAIL_CHESTPLATE
+      name: "&e✦ Baju Zirah"
+      lore: ["&7🛡 Kategori: &fBaju Zirah"]
+
+# ────────────────────────────────────────────────
+# Slot 40 - Tombol Tempa (Forge Button)
+# ────────────────────────────────────────────────
+forge_button:
+  ready:
+    material: ANVIL
+    name: "&a⚒ &2Tempa Sekarang!"
+    lore:
+      - " "
+      - "&7🔥 Klik untuk memulai proses tempa."
+      - "&8&m──────────────────"
+      - "&7⚙ Multiplier: &e{multiplier}x"
+      - "&7🏷 Tier: &b{tier}"
+      - "&7🎁 Hasil: &f{output_type}"
+      - "{material_composition}"
+      - "&8&m──────────────────"
+
+  not_ready:
+    material: ANVIL
+    name: "&c⛔ &4Belum Bisa Menempa"
+    lore:
+      - "&8&m──────────────────"
+      - " &7👉 Masukkan material yang cukup"
+      - " &7untuk memulai proses tempa."
+      - "&8&m──────────────────"
+
+  # Format untuk daftar komposisi material ({material}, {percentage})
+  composition_format:
+    header:
+      - "&8&m──────────────────"
+      - "&7🧱 Komposisi Material:"
+      - " "
+    line: " &8• &f{material} &7(&e{percentage}%&7)"
