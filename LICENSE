@@ -1,0 +1,29 @@
+CYAYO REFERENCE & EDUCATIONAL LICENSE
+Copyright (c) 2024 Cyayo Cressiel. Seluruh hak cipta dilindungi undang-undang.
+
+Lisensi ini dibuat untuk memberikan akses kepada komunitas pengembang untuk mempelajari, menggunakan API, dan menjadikan karya ini sebagai referensi, namun tetap melindungi integritas karya asli milik Cyayo Cressiel.
+
+DENGAN MENGAKSES SOURCE CODE INI, ANDA MENYETUJUI SYARAT-SYARAT BERIKUT:
+
+1. TUJUAN EDUKASI & REFERENSI
+   Anda diperbolehkan untuk:
+   a. Mempelajari logika, struktur, dan algoritma yang digunakan dalam source code ini.
+   b. Menjadikan source code ini sebagai referensi atau inspirasi untuk membuat plugin baru milik Anda sendiri, selama plugin tersebut bukan merupakan salinan langsung.
+   c. Menggunakan API yang disediakan (jika ada) untuk integrasi antar-plugin milik Cyayo Cressiel.
+
+2. BATASAN (YANG DILARANG)
+   Anda TIDAK diperbolehkan untuk:
+   a. Melakukan "Copy-Paste" mentah-mentah (copying blindly) sebagian besar atau seluruh kode sumber ke dalam project lain.
+   b. Mendistribusikan ulang (redistribute) source code ini baik dalam bentuk asli maupun modifikasi tanpa izin tertulis dari Pemilik.
+   c. Meng-compile (build) dan membagikan file biner (.jar) asli atau yang dimodifikasi sedikit tanpa kontribusi orisinal yang signifikan dari Anda sendiri.
+   d. Menghapus atau mengubah informasi hak cipta (copyright) milik Cyayo Cressiel dalam komentar kode sumber aslinya.
+
+3. KEPEMILIKAN
+   Semua kode sumber, aset, dan dokumentasi dalam repositori ini adalah milik sah dari Cyayo Cressiel ("Pemilik"). Membuat plugin yang "mirip" diperbolehkan sebagai bentuk inovasi, namun dilarang keras melakukan kloning produk secara identik.
+
+4. PENYALAHGUNAAN
+   Penggunaan kode yang melanggar ketentuan di atas (terutama copy-paste tanpa usaha orisinal) akan dianggap sebagai pelanggaran hak cipta dan dapat dilaporkan kepada platform terkait (seperti GitHub DMCA) untuk penghapusan konten.
+
+---
+Dibuat dengan semangat berbagi ilmu,
+Cyayo Cressiel
