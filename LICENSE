@@ -1,5 +1,5 @@
-CYAYO REFERENCE & EDUCATIONAL LICENSE
-Copyright (c) 2024 Cyayo Cressiel. Seluruh hak cipta dilindungi undang-undang.
+CYAYO OPEN-REFERENCE & COLLABORATIVE LICENSE
+Dikembangkan oleh Cyayo Cressiel dengan bantuan asisten AI.
 
 Lisensi ini dibuat untuk memberikan akses kepada komunitas pengembang untuk mempelajari, menggunakan API, dan menjadikan karya ini sebagai referensi, namun tetap melindungi integritas karya asli milik Cyayo Cressiel.
 
@@ -11,19 +11,20 @@ DENGAN MENGAKSES SOURCE CODE INI, ANDA MENYETUJUI SYARAT-SYARAT BERIKUT:
    b. Menjadikan source code ini sebagai referensi atau inspirasi untuk membuat plugin baru milik Anda sendiri, selama plugin tersebut bukan merupakan salinan langsung.
    c. Menggunakan API yang disediakan (jika ada) untuk integrasi antar-plugin milik Cyayo Cressiel.
 
-2. BATASAN (YANG DILARANG)
-   Anda TIDAK diperbolehkan untuk:
-   a. Melakukan "Copy-Paste" mentah-mentah (copying blindly) sebagian besar atau seluruh kode sumber ke dalam project lain.
-   b. Mendistribusikan ulang (redistribute) source code ini baik dalam bentuk asli maupun modifikasi tanpa izin tertulis dari Pemilik.
-   c. Meng-compile (build) dan membagikan file biner (.jar) asli atau yang dimodifikasi sedikit tanpa kontribusi orisinal yang signifikan dari Anda sendiri.
-   d. Menghapus atau mengubah informasi hak cipta (copyright) milik Cyayo Cressiel dalam komentar kode sumber aslinya.
+2. SEMANGAT KOLABORASI (PANDUAN PENGGUNAAN)
+   Agar ekosistem pengembang tetap sehat, Anda sangat didorong untuk:
+   a. Menggunakan kode ini sebagai fondasi belajar; hindari penyalinan tanpa pemahaman agar Anda berkembang sebagai pengembang.
+   b. Melakukan modifikasi dan memberikan nilai tambah orisinal jika ingin mendistribusikan ulang karya turunan Anda.
+   c. Tetap mencantumkan kredit atau referensi ke repositori ini sebagai bentuk apresiasi terhadap karya asli.
+   d. Berbagi kembali ilmu yang Anda dapatkan dari sini kepada komunitas lainnya.
 
-3. KEPEMILIKAN
-   Semua kode sumber, aset, dan dokumentasi dalam repositori ini adalah milik sah dari Cyayo Cressiel ("Pemilik"). Membuat plugin yang "mirip" diperbolehkan sebagai bentuk inovasi, namun dilarang keras melakukan kloning produk secara identik.
+3. ATRIBUSI & KEPENGURUSAN
+   Source code ini adalah hasil implementasi teknis oleh AI di bawah kendali penuh Cyayo Cressiel. Seluruh desain arsitektur, logika sistem, perhitungan matematika, serta alur kerja dalam proyek ini dirancang secara orisinal oleh Cyayo Cressiel sebagai Arsitek Utama. 
+   AI hanya berperan sebagai asisten dalam penulisan sintaks kode sesuai dengan instruksi spesifik dan arahan logis dari sang Arsitek. Hak moral dan intelektual atas struktur karya ini tetap sepenuhnya milik Cyayo Cressiel.
 
-4. PENYALAHGUNAAN
-   Penggunaan kode yang melanggar ketentuan di atas (terutama copy-paste tanpa usaha orisinal) akan dianggap sebagai pelanggaran hak cipta dan dapat dilaporkan kepada platform terkait (seperti GitHub DMCA) untuk penghapusan konten.
+4. KOMITMEN BERSAMA
+   Lisensi ini bukan untuk membatasi kreativitas Anda, melainkan untuk mencegah penyebaran konten yang identik secara masif (spamming/cloning) tanpa adanya inovasi. Selama Anda berkarya dengan jujur dan menambahkan sentuhan pribadi Anda, Anda sangat dipersilakan untuk menggunakan sumber daya dalam repositori ini.
 
 ---
-Dibuat dengan semangat berbagi ilmu,
+Dibuat dengan semangat kolaborasi manusia & teknologi,
 Cyayo Cressiel
