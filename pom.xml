@@ -22,6 +22,18 @@
             <id>spigotmc-repo</id>
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
+        <repository>
+            <id>phoenix</id>
+            <url>https://nexus.phoenixdevt.fr/repository/maven-public/</url>
+        </repository>
+        <repository>
+            <id>placeholderapi</id>
+            <url>https://repo.helpch.at/releases/</url>
+        </repository>
+        <repository>
+            <id>auraskills</id>
+            <url>https://repo.aurelium.dev/repository/maven-public/</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -33,31 +45,28 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- MythicLib - local lib -->
+        <!-- MythicLib -->
         <dependency>
             <groupId>io.lumine</groupId>
             <artifactId>MythicLib-dist</artifactId>
-            <version>1.7.1-87</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/MythicLib.jar</systemPath>
+            <version>1.7.1-SNAPSHOT</version>
+            <scope>provided</scope>
         </dependency>
 
-        <!-- MMOItems - local lib -->
+        <!-- MMOItems -->
         <dependency>
             <groupId>net.Indyuce</groupId>
-            <artifactId>MMOItems</artifactId>
-            <version>6.10.1.50</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/MMOItems.jar</systemPath>
+            <artifactId>MMOItems-API</artifactId>
+            <version>6.10.1-SNAPSHOT</version>
+            <scope>provided</scope>
         </dependency>
 
-        <!-- PlaceholderAPI - local lib -->
+        <!-- PlaceholderAPI -->
         <dependency>
             <groupId>me.clip</groupId>
             <artifactId>placeholderapi</artifactId>
             <version>2.12.2</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/lib/PlaceholderAPI.jar</systemPath>
+            <scope>provided</scope>
         </dependency>
 
         <!-- WorldGuard - local lib -->
@@ -97,6 +106,14 @@
             <groupId>org.jetbrains</groupId>
             <artifactId>annotations</artifactId>
             <version>24.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- AuraSkills API -->
+        <dependency>
+            <groupId>dev.aurelium</groupId>
+            <artifactId>auraskills-api-bukkit</artifactId>
+            <version>2.3.12</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

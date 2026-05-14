@@ -1,0 +1,11 @@
+patterns:
+  - type: stat
+    stat: strength
+    value: 1
+    pattern:
+      interval: 2
+  - type: stat
+    stat: luck
+    value: 1
+    pattern:
+      interval: 5

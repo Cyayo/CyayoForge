@@ -1,0 +1,8 @@
+abilities:
+  cyayoforge/master_forger:
+    enabled: true
+    base_value: 10.0
+    value_per_level: 5.0
+    unlock: 5
+    level_up: 5
+    max_level: 10

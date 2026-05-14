@@ -56,8 +56,15 @@ public class CyayoForge extends JavaPlugin implements CyayoForgeAPI {
         registerListeners();
         registerCommands();
         registerPlaceholders();
+        registerIntegrations();
 
         getLogger().info("CyayoForge v" + getDescription().getVersion() + " enabled!");
+    }
+
+    private void registerIntegrations() {
+        if (Bukkit.getPluginManager().isPluginEnabled("AuraSkills")) {
+            new id.cyayo.forge.integration.AuraSkillsIntegration(this).register();
+        }
     }
 
     @Override
@@ -78,6 +85,10 @@ public class CyayoForge extends JavaPlugin implements CyayoForgeAPI {
         saveResource("menus/salvage.yml", false);
         saveResource("menus/inspect.yml", false);
         saveResource("salvage_bonus.yml", false);
+        saveResource("auraskills/skills.yml", false);
+        saveResource("auraskills/sources/forging.yml", false);
+        saveResource("auraskills/rewards/forging.yml", false);
+        saveResource("auraskills/abilities.yml", false);
     }
 
     private void registerListeners() {
