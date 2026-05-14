@@ -11,6 +11,7 @@ depend:
 
 softdepend:
   - PlaceholderAPI
+  - AuraSkills
 
 commands:
   cyayoforge:

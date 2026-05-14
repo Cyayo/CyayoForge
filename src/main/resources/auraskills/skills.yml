@@ -1,0 +1,13 @@
+skills:
+  cyayoforge/forging:
+    display_name: "Forging"
+    description: "Tempa senjata dan peralatan untuk mendapatkan Forging XP"
+    item:
+      material: furnace
+      pos: 5,4
+    abilities:
+      - cyayoforge/master_forger
+    rewards:
+      - cyayoforge/forging
+    sources:
+      - cyayoforge/forging

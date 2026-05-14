@@ -1,0 +1,5 @@
+sources:
+  forging:
+    type: cyayoforge/forging
+    multiplier: 1.0
+    xp: 0 # We give XP manually in code for now based on quality
