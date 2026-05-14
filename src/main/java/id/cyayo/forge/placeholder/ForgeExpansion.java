@@ -29,7 +29,7 @@ public class ForgeExpansion extends PlaceholderExpansion {
             case "total_forged"        -> String.valueOf(data.getTotal());
             case "total_forged_weapon" -> String.valueOf(data.getWeapon());
             case "total_forged_armor"  -> String.valueOf(data.getArmor());
-            case "last_forged"         -> data.getLastForged();
+            case "last_forged"         -> data.getLastForgedName();
             case "penalty_time"        -> String.valueOf(plugin.getForgeManager().getPenaltyTimeLeft(player.getUniqueId()));
             default                    -> null;
         };

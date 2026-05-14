@@ -1,0 +1,32 @@
+title: "&8Forge History: {player}"
+rows: 5
+
+# Layout 18 Slot (2 Baris Penuh)
+# Baris 2 (9-17) dan Baris 3 (18-26)
+history-slots: [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26]
+
+# Jumlah maksimum item yang disimpan
+max-history: 18
+
+items:
+  filler:
+    material: "GRAY_STAINED_GLASS_PANE"
+    name: " "
+  info:
+    slot: 4
+    material: "BOOK"
+    name: "&6Player History: &f{player}"
+    lore:
+      - "&7Statistik Penempaan:"
+      - " &8» &7Total Forged: &f{total}"
+      - " &8» &7Total Weapons: &f{weapon_count}"
+      - " &8» &7Total Armors: &f{armor_count}"
+      - " &8» &7Last Item: &e{last_item}"
+      - ""
+      - "&7Informasi Riwayat:"
+      - " &8» &7Menampilkan &f{count} &7item terbaru."
+      - " &8» &7Klik item untuk mengambil salinannya."
+
+messages:
+  take_success: "&a[CyayoForge] &fBerhasil mengambil salinan &e{item} &funtuk player &b{player}"
+  no_permission: "&cAnda tidak memiliki izin untuk melakukan ini."
