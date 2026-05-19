@@ -543,10 +543,15 @@ public class ForgeManager {
         try {
             double baseDmg = 0;
             if (mmoItem.hasData(ItemStats.ATTACK_DAMAGE)) {
-                DoubleData d = (DoubleData) mmoItem.getData(ItemStats.ATTACK_DAMAGE);
-                if (d != null) baseDmg = d.getValue();
+                StatHistory history = StatHistory.from(mmoItem, ItemStats.ATTACK_DAMAGE);
+                DoubleData d = (DoubleData) history.recalculate(mmoItem.getUpgradeLevel());
+                if (d != null) {
+                    baseDmg = d.getValue();
+                } else {
+                    DoubleData data = (DoubleData) mmoItem.getData(ItemStats.ATTACK_DAMAGE);
+                    if (data != null) baseDmg = data.getValue();
+                }
             }
-            double abilityDmg = baseDmg * (1.0 + plugin.getConfigManager().getAbilityDamagePercent() / 100.0);
 
             AbilityListData list = mmoItem.hasData(ItemStats.ABILITIES)
                     ? (AbilityListData) mmoItem.getData(ItemStats.ABILITIES)
@@ -559,19 +564,19 @@ public class ForgeManager {
                     if (handler == null) continue;
                     TriggerType trigger = MMOUtils.backwardsCompatibleTriggerType(mod.getTrigger());
                     AbilityData ab = new AbilityData(handler, trigger);
-                    ab.setModifier("damage", abilityDmg);
 
                     double scoreFactor = Math.max(0.0, Math.min(1.0, session.getPointPercentage() / 100.0));
                     double finalFactor = Math.max(0.0, Math.min(1.0, (scoreFactor * 0.7) + (Math.random() * 0.3)));
 
                     for (Map.Entry<String, double[]> entry : mod.getModifiers().entrySet()) {
+                        String modKey = entry.getKey();
                         double min = entry.getValue()[0];
                         double max = entry.getValue()[1];
                         double lowest = Math.min(min, max);
                         double highest = Math.max(min, max);
                         double val;
 
-                        if (entry.getKey().equalsIgnoreCase("cooldown")) {
+                        if (modKey.equalsIgnoreCase("cooldown")) {
                             // Semakin bagus skor (finalFactor 1.0) -> cooldown semakin cepat (lowest)
                             val = highest - (highest - lowest) * finalFactor;
                         } else {
@@ -579,7 +584,12 @@ public class ForgeManager {
                             val = lowest + (highest - lowest) * finalFactor;
                         }
                         
-                        ab.setModifier(entry.getKey(), val);
+                        if (modKey.equalsIgnoreCase("damage_percent")) {
+                            double calculatedDmg = baseDmg * (1.0 + val / 100.0);
+                            ab.setModifier("damage", calculatedDmg);
+                        } else {
+                            ab.setModifier(modKey, val);
+                        }
                     }
 
                     list.add(ab);
