@@ -389,6 +389,10 @@ public class ForgeManager {
     // ─────────────────────────────────────────────
 
     public ItemStack buildOutput(ForgeSession session) {
+        return buildOutput(session, true);
+    }
+
+    public ItemStack buildOutput(ForgeSession session, boolean includeMaterialData) {
         try {
             String templateId = session.getSelectedOutput().getTemplateId(session.getResultTier());
             MMOItemTemplate template = findTemplate(templateId);
@@ -405,7 +409,7 @@ public class ForgeManager {
             applyCustomSmithStat(mmoItem, session);
 
             ItemStack item = new ItemStackBuilder(mmoItem).build();
-            return injectMaterialData(item, session);
+            return includeMaterialData ? injectMaterialData(item, session) : item;
         } catch (Exception e) {
             plugin.getLogger().log(Level.SEVERE, "Gagal membuat output tempa", e);
             return null;

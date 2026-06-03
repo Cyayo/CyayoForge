@@ -3,6 +3,7 @@ package id.cyayo.forge.command;
 import id.cyayo.forge.CyayoForge;
 import id.cyayo.forge.gui.ForgeGUI;
 import id.cyayo.forge.gui.SalvageMenuGUI;
+import id.cyayo.forge.model.MaterialData;
 import id.cyayo.forge.model.ForgeQuality;
 import id.cyayo.forge.model.ForgeType;
 import id.cyayo.forge.util.ColorUtil;
@@ -16,9 +17,11 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
 public class ForgeCommand implements CommandExecutor, TabCompleter {
@@ -168,7 +171,7 @@ public class ForgeCommand implements CommandExecutor, TabCompleter {
                 // Create dummy session
                 id.cyayo.forge.model.ForgeSession session = new id.cyayo.forge.model.ForgeSession(
                         target.getUniqueId(),
-                        new ArrayList<>(), // empty materials
+                    createRandomGiveMaterials(),
                         recipe,
                         tier,
                         selected,
@@ -181,7 +184,7 @@ public class ForgeCommand implements CommandExecutor, TabCompleter {
                 boolean injectSmith = plugin.getConfigManager().getRawConfig().getBoolean("command.give.inject_penempa", false);
                 session.setInjectSmith(injectSmith);
 
-                ItemStack item = plugin.getForgeManager().buildOutput(session);
+                ItemStack item = plugin.getForgeManager().buildOutput(session, false);
                 if (item == null) {
                     sender.sendMessage(id.cyayo.forge.util.ColorUtil.color(plugin.getConfigManager().getMessage("give_fail")));
                     return true;
@@ -391,5 +394,27 @@ public class ForgeCommand implements CommandExecutor, TabCompleter {
         return list.stream()
                 .filter(s -> s.toLowerCase().startsWith(prefix.toLowerCase()))
                 .collect(Collectors.toList());
+    }
+
+    private List<ItemStack> createRandomGiveMaterials() {
+        List<MaterialData> pool = new ArrayList<>(plugin.getMaterialConfig().getAllMaterials().values().stream()
+                .filter(MaterialData::isForgeable)
+                .toList());
+
+        if (pool.isEmpty()) return new ArrayList<>();
+
+        Collections.shuffle(pool);
+        int maxCount = Math.min(3, pool.size());
+        int count = ThreadLocalRandom.current().nextInt(1, maxCount + 1);
+
+        List<ItemStack> materials = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            MaterialData material = pool.get(i);
+            ItemStack item = plugin.getMaterialConfig().createMaterial(material.getId(), 1);
+            if (item != null) {
+                materials.add(item);
+            }
+        }
+        return materials;
     }
 }
